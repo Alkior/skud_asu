@@ -1,0 +1,146 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : 14 янв. 2022 г., 14:14:55
+    Author     : epotapov
+*/
+
+$blue: #74c4c8;
+$pink: #ec7277;
+$white: #e1ecde;
+$green: #079554;
+
+body {
+  background-color: $blue;
+  margin: 0;
+}
+
+.wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate( -50%, -50% );
+}
+
+.face {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70vmin;
+  height: 70vmin;
+  border-radius: 50%;
+  position: relative;
+  background: radial-gradient( ellipse at center, $pink, $pink 60%, $white calc( 60% + 1px ), $white 63%, $green calc( 63% + 1px ), $green 68%, darken( $green, 8 ) calc( 68% + 1px ));
+  box-shadow: -0.3vmin -0.3vmin 0.1vmin $white,
+  3vmin 3vmin 0.1vmin darken( $blue, 15 );
+
+  &:after {
+    content: '';
+    display: block;
+    width: 3.5vmin;
+    height: 3.5vmin;
+    border-radius: 50%;
+    background-color: lighten( $pink, 20 );
+    position: absolute;
+  }
+}
+
+.quarter {
+  height: 80%;
+  width: 80%;
+  position: absolute;
+
+  div {
+    height: 10%;
+    width: 2.4%;
+    border-radius: 1vmin;
+    background-color: darken( $pink, 25 );
+    position: absolute;
+
+    &:nth-child( even ) {
+      top: 50% - 5%;
+      transform: rotate( 90deg );
+    }
+
+    &:nth-child( odd ) {
+      left: 50% - 1.2%;
+    }
+
+    &:nth-child( 1 ) {
+      top: 0;
+    }
+
+    &:nth-child( 2 ) {
+      right: 3%;
+    }
+
+    &:nth-child( 3 ) {
+      bottom: 0;
+    }
+
+    &:nth-child( 4 ) {
+      left: 3%;
+    }
+  }
+}
+
+.seeds {
+  width: 85%;
+  height: 85%;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+
+  div {
+    display: block;
+    height: 3.5vmin;
+    width: 2vmin;
+    background-color: darken( $pink, 15 );
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: absolute;
+
+    @for $i from 1 through 15 {
+      &:nth-child( #{ $i }) {
+        top: random(80) + 1%;
+        left: $i * 6%;
+        transform: rotate( #{ random(360) }deg );
+      }
+    }
+  }
+}
+
+.hands {
+  div {
+    position: absolute;
+    bottom: 50%;
+    border-radius: 1vmin;
+    transform-origin: 50% 100%;
+    transform: rotate( 0 );
+
+    &.h {
+      height: 27%;
+      width: 2.4%;
+      left: 50% - 1.2%;
+      background-color: darken( $pink, 44 );
+    }
+
+    &.m {
+      height: 40%;
+      width: 2.4%;
+      left: 50% - 1.2%;
+      background-color: darken( $pink, 33 );
+    }
+
+    &.s {
+      height: 50%;
+      width: 1%;
+      left: 50% - 0.5%;
+      bottom: 40%;
+      transform-origin: 50% 80%;
+      background-color: lighten( $pink, 20 );
+    }
+  }
+}
